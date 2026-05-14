@@ -1,0 +1,40 @@
+setcpm(85/4)
+stack(
+    // DRUMS
+    s("bd*4").bank("RolandTR808").gain(.9)
+    , s("hh").euclid(11,16).gain(.6)
+        .sometimes(rev())
+        .crush(3)
+        .delay(.3)
+    , s("clap").euclid(3,8).gain(.3)
+    // BASS 
+    , note("c2 - c2 g2".fast(4)).s("sawtooth").gain(.8)
+        .sometimes(rev())
+        .lpf(400)//.slider(400,0,1600)
+        //.bpf(800)//.slider(800,0,1600)
+        //.hpf(1000)//.slider(100,0,1600)  
+  
+    
+    // MELODY
+    , note("c3 g3 [e3 a3] [- [g3 a3]]").s("supersaw").gain(slider(1,0,1))
+        .sometimes(rev())
+        .attack(.01)
+        .release(.1)
+        .decay(.5)
+        //.hpf(110)
+    , s("[bd hh sd hh] [bd hh sd hh] [bd hh sd clap] [clap:0 clap:4 clap bd]").gain(slider(0,0,1))
+        .sometimes(rev())
+        //.crush(80)
+        .bpf(700)
+        .note("[e4 f4] [g4 a4] [c4 g4]*2").sometimes(rev()).s("sine")//._spiral()
+    // More Melodies - Dorian
+    , s("hh*16").sometimes(rev()).gain(slider(04)
+        .attack(.01)
+        .release(.05)
+        .decay(.2)
+        .note("[d4 f4] [a4 d4] [b4 a4] [d4 a4]").s("sine")
+    // Melody - Phrygian
+    , s("hh*16").sometimes(rev()).gain(slider(0,0,1))
+        .note("[e4 g4] [b4 e4] [c4 b4] [e4 c4]").s("sine")  
+
+)
