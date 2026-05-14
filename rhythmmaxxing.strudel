@@ -1,0 +1,21 @@
+setcpm(120/4)
+stack(
+    // DRUMS
+    sound("bd*4").bank("RolandTR808")
+        .euclid(4,8)
+    , sound("[- <[rim][rim rim]>]*4")
+        .gain(.08)
+        .delay(.4)
+        .decay(.3)
+        .sometimes(rev())
+    // BASS
+    , n("[0 [4 4] 2 3 [4 4] 0 0 [4 7]]").sound("gm_acoustic_bass")
+        .scale("D:dorian")
+        .sometimes(rev())
+        .gain(0.4)
+    , n("<1 2><3 4><- 0><- 0>").sound("gm_acoustic_bass")
+        .scale("D:dorian")
+        .gain(0.6)
+        .decay(.6)
+    ,
+)
