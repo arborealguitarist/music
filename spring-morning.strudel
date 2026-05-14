@@ -28,7 +28,7 @@ stack(
         .bpf(700)
         .note("[e4 f4] [g4 a4] [c4 g4]*2").sometimes(rev()).s("sine")//._spiral()
     // More Melodies - Dorian
-    , s("hh*16").sometimes(rev()).gain(slider(04)
+    , s("hh*16").sometimes(rev()).gain(slider(04))
         .attack(.01)
         .release(.05)
         .decay(.2)
