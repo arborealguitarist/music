@@ -1,0 +1,22 @@
+setcpm(120/4)
+
+stack(
+    stack(
+        s("bd*4").gain(0.9)
+        , s("hh*16").gain(.25)
+            .sometimes(rev())
+            .decay(.08)
+        , s("sd*2").gain(.3)
+        , n("0 4 4 0 4 4 0 [2 2]").s("clap")
+            .decay(.2)
+            .delay(0.25).gain(0.2).sometimes(rev())
+            //.delay(0.25).s("sawtooth").gain(.8)
+        , n("[0 4 2 4]*2".add("48")).s("gm_synth_strings_1").gain(0.4)
+            .sometimes(rev())
+            .attack(.05)
+            .release(0.15)
+            .decay(.1)
+            .delay(.8)//.s("sawtooth")
+    ),
+    
+)
