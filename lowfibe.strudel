@@ -1,0 +1,42 @@
+setcpm(70/4)
+
+stack(
+  BEAT
+  s("bd".fast(4)).bank("RolandTR808").gain(1.05)
+    .compressor(2000)
+  , s("- <- sd>".fast(4)).bank("RolandTR808").gain(.1)
+    // .delay(4)
+    .euclid(5,8)
+  , s("hh*16").gain(.1)
+    .sometimes(rev())
+    // .decay(.8)
+    .hpf(100)
+    .crush(1)
+
+  RHYTHM
+  , n("[0 0] <[4 2] [2 4]>".fast(4)).s("sawtooth").gain(.3)
+    .scale("E3:Phrygian")
+    .flux(rev())
+    .crush(12)
+    .decay(.9).lpf(300)
+    .lpf(tri.range(99, 1600).slow(16))
+
+  , s("hh").euclid(3,8).gain(.9)
+    .note("6 4 5 4").scale("E2:Phrygian")
+    .flux(rev())
+    .crush(12)
+  
+  MELODY
+  , n("[0 - 3 2 4 - 4 2 6 3]".fast(2)).s("sax").gain(.9)
+    .scale("E4:Phrygian")
+    .decay(.4)
+    .sometimes(rev())
+    .hpf(2000)
+
+  , n("[0 0] [- 0] [2 3] <[4 2] [4 2] [4 2] [2 4 3 2]>").s("supersaw,gm_epiano1").gain(.0)
+    .scale("E4:Phrygian")
+    .decay(.9)
+    .sometimes(rev())
+      
+  
+)
