@@ -1,0 +1,29 @@
+setcpm(140/4)
+
+await samples('github:mot4i/garden')
+
+stack(
+  s("garden_bd:2".fast(4))
+  , s("- garden_lt garden_lt,saw".fast(4)).gain(.7)
+      .attack(.01)
+      .decay(.3)
+      .lpf(tri.range(300,2000).slow(16))
+
+  // BASS
+  , s("square".fast(4)).lpf(tri.range(300,850).slow(8)).gain(.9)
+      .attack(.01)
+      .release(.9)
+      .decay(.8)
+      // .room(12)
+  , s("pulse".fast(8)).euclid(3,12).gain(.9)
+      .delay(tri.range(0,2).slow(8))
+      // .delay(0)
+      .decay(.8)
+      .lpf(tri.range(600,850).slow(2))
+  
+
+  // SYNTH
+  , s("sine").n("<3 3 4 2>").scale("Gb:dorian")
+      .decay(.9)
+  
+).gain(0.00)
